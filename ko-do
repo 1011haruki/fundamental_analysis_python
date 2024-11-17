@@ -1,0 +1,125 @@
+# #株価収益率
+# def Price_Earnings_Ratio():
+#     stock_price = float(input('株価（円）'))
+#     net_profit = int(input('純利益（円）'))
+#     Number_of_issued_shares = int(input('発行済み株式枚数（枚）'))
+    
+
+#     PER = stock_price / (net_profit / Number_of_issued_shares)
+#     if PER >= 20:
+#         print('割高です。')
+#     elif 10 < PER < 20:
+#         print('割高でもなく、割安でもありません。') 
+#     elif PER >= 10:
+#         print('割安です。')
+    
+#     return PER
+# PER = Price_Earnings_Ratio()
+# print(f'PERは{PER}倍です。')
+
+#株価純資産倍率
+# def Price_Book_value_Ratio():
+#     stock_price = float(input('株価（円）'))
+#     Number_of_issued_shares = int(input('発行済み株式枚数（枚）'))
+#     net_worth = int(input('純資産（円）'))
+
+#     PBR = stock_price /(net_worth / Number_of_issued_shares)*100
+#     if PBR > 1:
+#      print('割高です。')
+#     elif 1 < PBR < 1:
+#      print('割高でも割安でもありません。')
+#     elif PBR < 1:
+#      print('割安です。')
+#     return PBR
+
+# PBR = Price_Book_value_Ratio()
+# print(f'PBRは{PBR}倍です。')
+
+#自己資本利益率
+# def Return_On_Equity():
+#    net_income = int(input('当期純利益（円）'))
+#    equity_capital = int(input('自己資本（円）'))
+#    ROE = equity_capital / net_income
+#    if ROE >= 10:
+#       print('高収益です。')
+#    elif 5 < ROE < 10:
+#         print('高収益でも、低収益でもありません。')
+#    elif ROE >= 5:
+#         print('低収益です。') 
+#    return ROE
+# ROE = Return_On_Equity()
+# print(f'ROEは{ROE}%です。')
+
+#class化
+
+class FinancialMetrics:
+    def __init__(self, stock_price, net_profit, number_of_issued_shares, net_worth, equity_capital):
+        self.stock_price = stock_price
+        self.net_profit = net_profit
+        self.number_of_issued_shares = number_of_issued_shares
+        self.net_worth = net_worth
+        self.equity_capital = equity_capital
+
+    # 株価収益率 (PER) の計算
+    def price_earnings_ratio(self):
+        PER = self.stock_price / (self.net_profit / self.number_of_issued_shares)
+        if PER >= 20:
+            print('割高です。')
+        elif 10 < PER < 20:
+            print('割高でもなく、割安でもありません。') 
+        elif PER >= 10:
+            print('割安です。')
+        
+        return PER
+
+    # 株価純資産倍率 (PBR) の計算
+    def price_book_value_ratio(self):
+        PBR = self.stock_price / (self.net_worth / self.number_of_issued_shares) * 100
+        if PBR > 1:
+            print('割高です。')
+        elif PBR == 1:
+            print('割高でも割安でもありません。')
+        elif PBR < 1:
+            print('割安です。')
+        return PBR
+
+    # 自己資本利益率 (ROE) の計算
+    def return_on_equity(self):
+        ROE = self.equity_capital / self.net_profit
+        if ROE >= 10:
+            print('高収益です。')
+        elif 5 < ROE < 10:
+            print('高収益でも、低収益でもありません。')
+        elif ROE <= 5:
+            print('低収益です。')
+        return ROE
+
+
+# ユーザーからの入力を受け取り、クラスのインスタンスを作成
+stock_price = float(input('株価（円）: '))
+net_profit = int(input('純利益（円）: '))
+number_of_issued_shares = int(input('発行済み株式枚数（枚）: '))
+net_worth = int(input('純資産（円）: '))
+equity_capital = int(input('自己資本（円）: '))
+
+# FinancialMetricsクラスのインスタンスを作成
+metrics = FinancialMetrics(stock_price, net_profit, number_of_issued_shares, net_worth, equity_capital)
+
+# 計算結果を表示
+PER = metrics.price_earnings_ratio()
+print(f'PERは{PER}倍です。')
+
+PBR = metrics.price_book_value_ratio()
+print(f'PBRは{PBR}倍です。')
+
+ROE = metrics.return_on_equity()
+print(f'ROEは{ROE*100}%です。')  # ROEはパーセント表示
+
+
+   
+    
+
+
+    
+
+
